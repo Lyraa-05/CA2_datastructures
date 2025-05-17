@@ -16,6 +16,8 @@ public class Application extends javafx.application.Application {
         stage.show();
     }
 
+    abstract
+
     public static void main(String[] args) {
         launch();
     }
