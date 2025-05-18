@@ -1,6 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" />
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.RouteFinderController">
+    <left>
+        <VBox prefHeight="600.0" prefWidth="300.0" spacing="10.0" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+            <children>
+                <Label text="Vienna U-Bahn Route Finder">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Separator prefWidth="200.0" />
+                <Label text="Starting Station" />
+                <ComboBox fx:id="startStationComboBox" prefWidth="280.0" />
+                <Label text="Destination Station" />
+                <ComboBox fx:id="endStationComboBox" prefWidth="280.0" />
+                <Separator prefWidth="200.0" />
+                <Label text="Waypoints (Stations to Visit)" />
+                <ListView fx:id="waypointListView" prefHeight="80.0" prefWidth="280.0" />
+                <HBox spacing="5.0">
+                    <children>
+                        <ComboBox fx:id="waypointComboBox" prefWidth="200.0" />
+                        <Button fx:id="addWaypointButton" mnemonicParsing="false" onAction="#addWaypoint" text="Add" />
+                        <Button fx:id="removeWaypointButton" mnemonicParsing="false" onAction="#removeWaypoint" text="Remove" />
+                    </children>
+                </HBox>
+                <Separator prefWidth="200.0" />
+                <Label text="Stations to Avoid" />
+                <ListView fx:id="avoidListView" prefHeight="80.0" prefWidth="280.0" />
+                <HBox spacing="5.0">
+                    <children>
+                        <ComboBox fx:id="avoidComboBox" prefWidth="200.0" />
+                        <Button fx:id="addAvoidButton" mnemonicParsing="false" onAction="#addAvoidStation" text="Add" />
+                        <Button fx:id="removeAvoidButton" mnemonicParsing="false" onAction="#removeAvoidStation" text="Remove" />
+                    </children>
+                </HBox>
+                <Separator prefWidth="200.0" />
+                <Label text="Route Finding Method" />
+                <ComboBox fx:id="routeMethodComboBox" prefWidth="280.0" />
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <children>
+                        <Label text="Line Change Penalty:" />
+                        <Slider fx:id="penaltySlider" blockIncrement="0.5" majorTickUnit="1.0" max="5.0" minorTickCount="0" prefWidth="150.0" showTickLabels="true" showTickMarks="true" value="1.0" />
+                    </children>
+                </HBox>
+                <Button fx:id="findRouteButton" mnemonicParsing="false" onAction="#findRoute" prefHeight="30.0" prefWidth="280.0" text="Find Route" />
+            </children>
+        </VBox>
+    </left>
+    <center>
+        <SplitPane dividerPositions="0.6" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" BorderPane.alignment="CENTER">
+            <items>
+                <Pane fx:id="mapPane" prefHeight="200.0" prefWidth="200.0" />
+                <VBox prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <Label text="Route Details:">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </VBox.margin>
+                        </Label>
+                        <TreeView fx:id="routeTreeView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                    </children>
+                </VBox>
+            </items>
+        </SplitPane>
+    </center>
+</BorderPane>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.demo.RouteFinderController"
+            prefWidth="400" prefHeight="200">
+
+    <ComboBox fx:id="startStationCombo" layoutX="50" layoutY="30" prefWidth="300" promptText="Select Start Station"/>
+    <ComboBox fx:id="destinationStationCombo" layoutX="50" layoutY="80" prefWidth="300" promptText="Select Destination Station"/>
+
+    <Button fx:id="findRouteButton" layoutX="150" layoutY="130" prefWidth="100" text="Find Route" onAction="#onFindRouteClicked"/>
+
+</AnchorPane>

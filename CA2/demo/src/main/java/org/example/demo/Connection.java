@@ -1,5 +1,7 @@
 package org.example.demo;
 
+import java.util.Objects;
+
 public class Connection {
     private final Station destination;
     private final String line;
@@ -24,6 +26,21 @@ public class Connection {
     }
     public double getDistance(){
         return distance;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Connection that = (Connection) obj;
+        return Objects.equals(destination, that.destination) &&
+                Objects.equals(line, that.line) &&
+                Objects.equals(colour, that.colour);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(destination, line, colour);
     }
 }
 
